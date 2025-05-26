@@ -4,7 +4,7 @@
 ### Clonar el repositorio ###
 
 ```bash
-   git clone https://github.com/usuario/repositorio.git
+   git clone https://github.com/Leomonbu/pruebalink.git
  ```
 
 ### Ejecutar con Docker ###
@@ -33,7 +33,7 @@
 - Direccionar a la base de datos
 ```bash
    USE dbLynk
-  GO
+   GO
 ```
 - Crear la tabla para productos
 ```bash
@@ -41,24 +41,24 @@
   	[Id_producto] [bigint] IDENTITY(1,1) NOT NULL,
   	[nombre_producto] [varchar](80) NOT NULL,
   	[precio_producto] [int] NOT NULL,
-  CONSTRAINT [PK_Productos] PRIMARY KEY CLUSTERED 
- (
+   CONSTRAINT [PK_Productos] PRIMARY KEY CLUSTERED 
+   (
 	  [Id_producto] ASC
- ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
- ) ON [PRIMARY] 
-GO
+   ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  ) ON [PRIMARY] 
+  GO
 ```
 - Crear la tabla para inventario
 ```bash
    CREATE TABLE [dbo].[Inventario](
 	[id_producto] [bigint] NOT NULL,
 	[cantidad] [int] NOT NULL,
- CONSTRAINT [PK_Inventario] PRIMARY KEY CLUSTERED 
-(
+   CONSTRAINT [PK_Inventario] PRIMARY KEY CLUSTERED 
+   (
 	[id_producto] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
+   )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+   ) ON [PRIMARY]
+  GO
 
 ALTER TABLE [dbo].[Inventario]  WITH CHECK ADD CONSTRAINT [FK_Inventario_Producto] FOREIGN KEY([id_producto])
 REFERENCES [dbo].[Productos] ([id_producto])
